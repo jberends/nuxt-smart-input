@@ -62,8 +62,8 @@ body {
 /* Suggestion chip styles */
 .suggestion-chip {
   @apply mt-3 inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium;
-  @apply bg-white/10 backdrop-blur-sm border border-white/20;
-  @apply text-white/90 shadow-lg;
+  @apply bg-gray-100 border border-gray-300;
+  @apply text-gray-800 shadow-lg;
   transition: all 0.3s ease;
   cursor: default;
 }
@@ -73,7 +73,7 @@ body {
 }
 
 .suggestion-chip.interactive:hover {
-  @apply bg-white/20 border-white/30;
+  @apply bg-gray-200 border-gray-400;
   transform: translateY(-1px);
   box-shadow: 0 8px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
 }
@@ -83,15 +83,15 @@ body {
 }
 
 .suggestion-chip-icon {
-  @apply w-4 h-4 flex-shrink-0;
+  @apply w-4 h-4 flex-shrink-0 text-gray-600;
 }
 
 .suggestion-chip-text {
-  @apply flex-1 min-w-0 truncate;
+  @apply flex-1 min-w-0 truncate text-gray-800;
 }
 
 .suggestion-chip-action {
-  @apply w-4 h-4 flex-shrink-0 opacity-70 hover:opacity-100;
+  @apply w-4 h-4 flex-shrink-0 opacity-70 hover:opacity-100 text-gray-600;
   transition: opacity 0.2s ease;
 }
 

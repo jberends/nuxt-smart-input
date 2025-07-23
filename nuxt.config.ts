@@ -17,11 +17,11 @@ export default defineNuxtConfig({
   // Runtime configuration for environment variables
   runtimeConfig: {
     // Private keys (only available on server-side)
-    agentAccessKey: process.env.NUXT_AGENT_ACCESS_KEY,
     
     // Public keys (exposed to client-side)
     public: {
-      agentEndpoint: process.env.NUXT_AGENT_ENDPOINT || 'https://rm3atnymbbmeazfftkvdcxxu.agents.do-ai.run'
+      agentEndpoint: process.env.NUXT_AGENT_ENDPOINT || 'https://rm3atnymbbmeazfftkvdcxxu.agents.do-ai.run',
+      agentAccessKey: process.env.NUXT_AGENT_ACCESS_KEY
     }
   },
   
@@ -44,10 +44,17 @@ export default defineNuxtConfig({
   ui: {
     global: true
   },
-  
-  // Build configuration
-  build: {
-    transpile: ['axios']
+
+  // Vite configuration for better module resolution
+  vite: {
+    define: {
+      global: 'globalThis',
+    },
+    server: {
+      fs: {
+        allow: ['..']
+      }
+    }
   },
   
   // Development server configuration

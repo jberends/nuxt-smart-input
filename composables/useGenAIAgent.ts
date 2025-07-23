@@ -1,4 +1,3 @@
-import axios, { type AxiosError } from 'axios'
 import type { 
   GenAIRequest, 
   GenAIResponse, 
@@ -31,11 +30,14 @@ export function useGenAIAgent(): UseGenAIAgentReturn {
    * Parse the API response content as JSON
    */
   const parseSummaryResponse = (content: string): SummaryResponse => {
+    console.log('🔍 Parsing content:', content)
     try {
       const parsed = JSON.parse(content)
+      console.log('✅ JSON parsed successfully:', parsed)
       
       // Ensure we have at least a summary field
       if (!parsed.summary) {
+        console.warn('⚠️ No summary field found, using content as fallback')
         return {
           summary: content.trim() || 'Unable to generate summary'
         }
@@ -49,7 +51,7 @@ export function useGenAIAgent(): UseGenAIAgentReturn {
         corrected_text: parsed.corrected_text
       }
     } catch (parseError) {
-      console.warn('Failed to parse GenAI response as JSON:', parseError)
+      console.warn('❌ Failed to parse GenAI response as JSON:', parseError)
       
       // Fallback: use the raw content as summary
       return {
@@ -75,19 +77,23 @@ export function useGenAIAgent(): UseGenAIAgentReturn {
       include_guardrails_info: false
     }
 
-    const response = await axios.post<GenAIResponse>(
+    console.log('🚀 Making API call with:', { requestData, endpoint: `${config.public.agentEndpoint}/api/v1/chat/completions` })
+
+    const response = await $fetch<GenAIResponse>(
       `${config.public.agentEndpoint}/api/v1/chat/completions`,
-      requestData,
       {
+        method: 'POST',
+        body: requestData,
         headers: {
           'Content-Type': 'application/json',
-          'Authorization': `Bearer ${config.agentAccessKey}`
+          'Authorization': `Bearer ${config.public.agentAccessKey}`
         },
         timeout: 30000 // 30 second timeout
       }
     )
 
-    return response.data
+    console.log('✅ API Response received:', response)
+    return response
   }
 
   /**
@@ -121,31 +127,36 @@ export function useGenAIAgent(): UseGenAIAgentReturn {
         }
 
         const content = response.choices[0].message.content
+        console.log('📝 Raw content from API:', content)
+        
         if (!content) {
           throw new Error('Empty response content from API')
         }
 
         const summaryResponse = parseSummaryResponse(content)
+        console.log('🎯 Parsed summary response:', summaryResponse)
         
         loading.value = false
         return summaryResponse
 
       } catch (err) {
+        console.error('❌ API call failed:', err)
         const apiError: ApiError = err instanceof Error ? err : new Error('Unknown error')
         
-        if (axios.isAxiosError(err)) {
-          const axiosError = err as AxiosError
-          apiError.status = axiosError.response?.status
-          apiError.code = axiosError.code
+        // Handle $fetch errors (similar to axios but different structure)
+        if (err && typeof err === 'object' && 'status' in err) {
+          const fetchError = err as any
+          apiError.status = fetchError.status || fetchError.statusCode
+          console.log('📊 Error status:', apiError.status)
           
           // Check for rate limiting
-          if (axiosError.response?.status === 429) {
-            const retryAfter = axiosError.response.headers['retry-after']
-            apiError.retryAfter = retryAfter ? parseInt(retryAfter) * 1000 : getRetryDelay(attempt)
+          if (fetchError.status === 429 || fetchError.statusCode === 429) {
+            apiError.retryAfter = getRetryDelay(attempt)
           }
           
           // Don't retry on certain errors
-          if (axiosError.response?.status === 401 || axiosError.response?.status === 403) {
+          if (fetchError.status === 401 || fetchError.status === 403 || 
+              fetchError.statusCode === 401 || fetchError.statusCode === 403) {
             lastError = apiError
             break
           }
