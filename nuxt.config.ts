@@ -1,5 +1,3 @@
-import tsconfigPaths from 'vite-tsconfig-paths'
-
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   compatibilityDate: '2025-07-15',
@@ -28,7 +26,7 @@ export default defineNuxtConfig({
   },
   
   // CSS framework
-  // css: ['~/assets/css/main.css'], // Moved to app.vue
+  css: ['../assets/css/main.css'],
   
   // App configuration
   app: {
@@ -44,18 +42,12 @@ export default defineNuxtConfig({
   
   // UI configuration
   ui: {
-    global: true,
-    icons: ['heroicons', 'lucide']
+    global: true
   },
   
   // Build configuration
   build: {
     transpile: ['axios']
-  },
-
-  // Vite configuration
-  vite: {
-    plugins: [tsconfigPaths()]
   },
   
   // Development server configuration
