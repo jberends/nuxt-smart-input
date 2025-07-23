@@ -1,6 +1,12 @@
 <template>
-  <div style="padding:2rem; text-align:center; font-family:system-ui">
-    <h1>Hello 👋</h1>
-    <p>The Nuxt pages directory is working!</p>
+  <div>
+    <h1>Hello from Index Page!</h1>
+    <p>This is the home page at /</p>
   </div>
-</template> 
+</template>
+
+<script setup>
+// This is a simple page component
+</script>
+
+ 

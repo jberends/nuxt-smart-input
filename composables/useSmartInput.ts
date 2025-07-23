@@ -1,5 +1,6 @@
 import type { 
   SmartInputProps, 
+  SmartInputEvents,
   UseSmartInputReturn, 
   LoadingState, 
   SummaryResponse 
@@ -11,7 +12,7 @@ import type {
  */
 export function useSmartInput(
   props: SmartInputProps,
-  emit: (event: string, ...args: any[]) => void
+  emit: <T extends keyof SmartInputEvents>(event: T, ...args: SmartInputEvents[T]) => void
 ): UseSmartInputReturn {
   const genAI = useGenAIAgent()
   

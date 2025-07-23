@@ -37,7 +37,7 @@
 
     <!-- Debug Info (Development Only) -->
     <div
-      v-if="showDebugInfo && process.dev"
+      v-if="showDebugInfo && $development"
       class="mt-2 text-xs text-white/60 space-y-1"
     >
       <div>State: {{ loadingState }}</div>

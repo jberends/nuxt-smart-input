@@ -25,8 +25,8 @@ export default defineNuxtConfig({
     }
   },
   
-  // CSS framework
-  css: ['../assets/css/main.css'],  // DONT TOUCH THIS AS IT WORKS!!!!!!! IT IS USING THE CSS FILE IN THE ASSETS FOLDER
+  // CSS framework - temporarily disabled to fix routing
+  css: ['../assets/css/main.css'],
   
   // App configuration
   app: {
@@ -56,9 +56,7 @@ export default defineNuxtConfig({
     host: 'localhost'
   },
   
-  // Enable SSR and pages
-  ssr: true,
-  pages: true,
+  // Pages and SSR are enabled by default in Nuxt 4
   
   // Experimental features
   experimental: {
