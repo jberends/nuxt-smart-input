@@ -21,7 +21,7 @@ export default defineNuxtConfig({
     
     // Public keys (exposed to client-side)
     public: {
-      agentEndpoint: process.env.NUXT_AGENT_ENDPOINT || 'https://rm3atnymbbmeazfftkvdcxxu.agents.do-ai.run/'
+      agentEndpoint: process.env.NUXT_AGENT_ENDPOINT || 'https://rm3atnymbbmeazfftkvdcxxu.agents.do-ai.run'
     }
   },
   

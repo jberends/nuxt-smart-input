@@ -11,6 +11,8 @@ AI-powered smart input component with automatic text summarization using Digital
 
 ## Features
 
+![Features](specs/features.png)
+
 🤖 **AI-Powered Suggestions** - Automatic text summarization using DigitalOcean GenAI  
 ⚡ **Real-time Processing** - Monitors connected textareas with intelligent debouncing  
 🎨 **Beautiful UI** - Modern design with Nuxt UI and smooth animations  
@@ -130,7 +132,7 @@ const onSuggestionApplied = (value) => {
 
 ```bash
 # Required
-NUXT_AGENT_ENDPOINT=https://rm3atnymbbmeazfftkvdcxxu.agents.do-ai.run/
+NUXT_AGENT_ENDPOINT=https://rm3atnymbbmeazfftkvdcxxu.agents.do-ai.run
 NUXT_AGENT_ACCESS_KEY=your_token_here
 
 # Optional
