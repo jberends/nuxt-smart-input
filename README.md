@@ -38,7 +38,10 @@ AI-powered smart input component with automatic text summarization using Digital
 
 Watch the Smart Input Box in action:
 
-https://github.com/user-attachments/assets/smart-input-demo-250723.mp4
+<video width="800" controls>
+  <source src="specs/smart-input-demo-250723.mp4" type="video/mp4">
+  Your browser does not support the video tag.
+</video>
 
 ### Interactive Demo
 
