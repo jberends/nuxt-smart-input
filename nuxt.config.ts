@@ -1,0 +1,71 @@
+import tsconfigPaths from 'vite-tsconfig-paths'
+
+// https://nuxt.com/docs/api/configuration/nuxt-config
+export default defineNuxtConfig({
+  compatibilityDate: '2025-07-15',
+  devtools: { enabled: true },
+  
+  // Modules
+  modules: [
+    '@nuxt/ui'
+  ],
+  
+  // TypeScript configuration
+  typescript: {
+    strict: true,
+    typeCheck: true
+  },
+  
+  // Runtime configuration for environment variables
+  runtimeConfig: {
+    // Private keys (only available on server-side)
+    agentAccessKey: process.env.NUXT_AGENT_ACCESS_KEY,
+    
+    // Public keys (exposed to client-side)
+    public: {
+      agentEndpoint: process.env.NUXT_AGENT_ENDPOINT || 'https://rm3atnymbbmeazfftkvdcxxu.agents.do-ai.run/'
+    }
+  },
+  
+  // CSS framework
+  // css: ['~/assets/css/main.css'], // Moved to app.vue
+  
+  // App configuration
+  app: {
+    head: {
+      title: 'Smart Input Box - AI-Powered Text Summarization',
+      meta: [
+        { charset: 'utf-8' },
+        { name: 'viewport', content: 'width=device-width, initial-scale=1' },
+        { name: 'description', content: 'AI-powered smart input box component with automatic text summarization using DigitalOcean GenAI Chat Agent' }
+      ]
+    }
+  },
+  
+  // UI configuration
+  ui: {
+    global: true,
+    icons: ['heroicons', 'lucide']
+  },
+  
+  // Build configuration
+  build: {
+    transpile: ['axios']
+  },
+
+  // Vite configuration
+  vite: {
+    plugins: [tsconfigPaths()]
+  },
+  
+  // Development server configuration
+  devServer: {
+    port: 3000,
+    host: 'localhost'
+  },
+  
+  // Experimental features
+  experimental: {
+    payloadExtraction: false
+  }
+})

@@ -1,0 +1,223 @@
+/* Main CSS for Smart Input Box project */
+
+/* Reset and base styles */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+/* Custom CSS variables for theming */
+:root {
+  --gradient-primary: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  --gradient-secondary: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+  --gradient-accent: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+  --smart-input-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --smart-input-shadow-hover: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+/* Body and layout */
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  font-family: system-ui, -apple-system, sans-serif;
+}
+
+/* Beautiful gradient backgrounds */
+.gradient-bg-primary {
+  background: var(--gradient-primary);
+}
+
+.gradient-bg-secondary {
+  background: var(--gradient-secondary);
+}
+
+.gradient-bg-accent {
+  background: var(--gradient-accent);
+}
+
+/* Smart Input component styles */
+.smart-input-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+.smart-input-field {
+  transition: all 0.3s ease;
+  box-shadow: var(--smart-input-shadow);
+}
+
+.smart-input-field:hover {
+  box-shadow: var(--smart-input-shadow-hover);
+}
+
+.smart-input-field:focus {
+  box-shadow: var(--smart-input-shadow-hover);
+}
+
+/* Suggestion chip styles */
+.suggestion-chip {
+  @apply mt-3 inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium;
+  @apply bg-white/10 backdrop-blur-sm border border-white/20;
+  @apply text-white/90 shadow-lg;
+  transition: all 0.3s ease;
+  cursor: default;
+}
+
+.suggestion-chip.interactive {
+  cursor: pointer;
+}
+
+.suggestion-chip.interactive:hover {
+  @apply bg-white/20 border-white/30;
+  transform: translateY(-1px);
+  box-shadow: 0 8px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+.suggestion-chip.loading {
+  @apply animate-pulse;
+}
+
+.suggestion-chip-icon {
+  @apply w-4 h-4 flex-shrink-0;
+}
+
+.suggestion-chip-text {
+  @apply flex-1 min-w-0 truncate;
+}
+
+.suggestion-chip-action {
+  @apply w-4 h-4 flex-shrink-0 opacity-70 hover:opacity-100;
+  transition: opacity 0.2s ease;
+}
+
+/* Loading spinner */
+.smart-input-spinner {
+  @apply w-4 h-4 animate-spin;
+}
+
+/* Demo page styles */
+.demo-container {
+  min-height: 100vh;
+  background: var(--gradient-primary);
+  @apply flex flex-col items-center justify-center p-6;
+}
+
+.demo-content {
+  @apply w-full max-w-2xl space-y-8;
+}
+
+.demo-title {
+  @apply text-4xl font-bold text-white text-center mb-2;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.demo-subtitle {
+  @apply text-xl text-white/80 text-center mb-8;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+.demo-section {
+  @apply bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+}
+
+.demo-section-title {
+  @apply text-lg font-semibold text-white mb-4;
+}
+
+.demo-textarea {
+  @apply w-full min-h-[120px] p-4 rounded-lg border border-gray-300;
+  @apply focus:ring-2 focus:ring-blue-500 focus:border-transparent;
+  @apply resize-vertical bg-white/95 backdrop-blur-sm;
+  transition: all 0.3s ease;
+}
+
+.demo-textarea:focus {
+  box-shadow: var(--smart-input-shadow-hover);
+}
+
+/* Marketing section */
+.marketing-section {
+  @apply mt-12 text-center space-y-6;
+}
+
+.marketing-title {
+  @apply text-2xl font-bold text-white;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.marketing-text {
+  @apply text-white/80 leading-relaxed;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+.feature-grid {
+  @apply grid grid-cols-1 md:grid-cols-2 gap-6 mt-8;
+}
+
+.feature-card {
+  @apply bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/20;
+  @apply text-white transition-all duration-300;
+}
+
+.feature-card:hover {
+  @apply bg-white/15 border-white/30;
+  transform: translateY(-2px);
+}
+
+.feature-icon {
+  @apply w-8 h-8 mb-4 text-white/90;
+}
+
+.feature-title {
+  @apply text-lg font-semibold mb-2;
+}
+
+.feature-description {
+  @apply text-white/80 text-sm;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .demo-container {
+    @apply p-4;
+  }
+  
+  .demo-title {
+    @apply text-3xl;
+  }
+  
+  .demo-subtitle {
+    @apply text-lg;
+  }
+  
+  .demo-section {
+    @apply p-4;
+  }
+}
+
+/* Animation utilities */
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.3s ease;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+}
+
+.slide-down-enter-active,
+.slide-down-leave-active {
+  transition: all 0.3s ease;
+}
+
+.slide-down-enter-from {
+  opacity: 0;
+  transform: translateY(-10px);
+}
+
+.slide-down-leave-to {
+  opacity: 0;
+  transform: translateY(-10px);
+} 
