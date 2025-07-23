@@ -1,5 +1,7 @@
 # Smart Input Box
 
+![Hero](specs/hero.png)
+
 AI-powered smart input component with automatic text summarization using DigitalOcean GenAI Chat Agent. Built with Vue 3, Nuxt 3, and TypeScript.
 
 ![Smart Input Box Demo](https://img.shields.io/badge/Status-Ready-brightgreen)
@@ -18,6 +20,8 @@ AI-powered smart input component with automatic text summarization using Digital
 🚀 **Production Ready** - Error handling, retry logic, and performance optimizations  
 
 ## Demo
+
+![Demo Screenshot](specs/image.png)
 
 Visit the interactive demo to see the Smart Input Box in action:
 
