@@ -26,7 +26,7 @@ export default defineNuxtConfig({
   },
   
   // CSS framework
-  css: ['../assets/css/main.css'],
+  css: ['../assets/css/main.css'],  // DONT TOUCH THIS AS IT WORKS!!!!!!! IT IS USING THE CSS FILE IN THE ASSETS FOLDER
   
   // App configuration
   app: {
