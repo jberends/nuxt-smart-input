@@ -56,6 +56,10 @@ export default defineNuxtConfig({
     host: 'localhost'
   },
   
+  // Enable SSR and pages
+  ssr: true,
+  pages: true,
+  
   // Experimental features
   experimental: {
     payloadExtraction: false
