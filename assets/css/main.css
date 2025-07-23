@@ -128,7 +128,7 @@ body {
 .demo-textarea {
   @apply w-full min-h-[120px] p-4 rounded-lg border border-gray-300;
   @apply focus:ring-2 focus:ring-blue-500 focus:border-transparent;
-  @apply resize-vertical bg-white/95 backdrop-blur-sm;
+  @apply resize-y bg-white/95 backdrop-blur-sm;
   transition: all 0.3s ease;
 }
 
