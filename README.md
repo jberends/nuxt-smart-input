@@ -21,9 +21,26 @@ AI-powered smart input component with automatic text summarization using Digital
 🛡️ **Type Safe** - Full TypeScript support with comprehensive type definitions  
 🚀 **Production Ready** - Error handling, retry logic, and performance optimizations  
 
+## Documentation
+
+📋 **[Complete Technical Specifications](specs/SPECS.md)** - Comprehensive technical documentation including:
+- Detailed API integration specifications
+- Component architecture and design patterns  
+- Development guidelines and best practices
+- MVP requirements and success criteria
+- Future roadmap and enhancement plans
+
 ## Demo
 
 ![Demo Screenshot](specs/image.png)
+
+### Video Demo
+
+Watch the Smart Input Box in action:
+
+https://github.com/user-attachments/assets/smart-input-demo-250723.mp4
+
+### Interactive Demo
 
 Visit the interactive demo to see the Smart Input Box in action:
 
